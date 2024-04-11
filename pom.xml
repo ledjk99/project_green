@@ -6,9 +6,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ezen</groupId>
-    <artifactId>project_green_health</artifactId>
+    <artifactId>project_green</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>project_green_health</name>
+    <name>project_green</name>
     <packaging>war</packaging>
 
     <properties>
