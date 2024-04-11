@@ -1,63 +1,149 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.util.List" %>
+<%@ page import="com.ezen.mall.web.product.dto.Product"%>
+<%@ page import="com.ezen.mall.web.product.service.CategoryServiceImpl"%>
+<%@ page import="com.ezen.mall.web.product.service.CategoryService"%>
+<%@ page import="com.ezen.mall.web.product.dto.File" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+    String categoryId = request.getParameter("categoryId");
+    String productId = request.getParameter("productId");
+
+    CategoryService categoryService = new CategoryServiceImpl();
+
+    Product product = categoryService.getReadProduct(Integer.parseInt(categoryId), Integer.parseInt(productId));
+    List<File> file = categoryService.getfile();
+    request.setAttribute("product",product);
+    request.setAttribute("file",file);
+
+%>
+
 <!DOCTYPE html>
-<html lang="ko">
-<!-- head start -->
+<html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Green Health</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet"/>
-    <link href="/css/notice.css" rel="stylesheet"/>
-    <link href="/css/qnalist.css" rel="stylesheet"/>
-    <link href="/css/reviewlist.css" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="https://order.pstatic.net/202404/04_163641_1712216201/order_customer/mobile_static/css/service/mobile/detail.css">
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Stylish&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3accb69132.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#!"><i class="fa-solid fa-capsules"></i>Green Health</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
 
-<!-- nav start -->
-<jsp:include page="/module/nav.jsp"/>
-<!-- nav end -->
-<!-- header start -->
-<jsp:include page="/module/header.jsp"/>
-<!-- header end -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">All Products</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">인기 상품</a></li>
+                        <li><a class="dropdown-item" href="#!">비타민</a></li>
+                        <li><a class="dropdown-item" href="#!">루테인</a></li>
+                        <li><a class="dropdown-item" href="#!">오메가</a></li>
+                        <li><a class="dropdown-item" href="#!">아연</a></li>
+                        <li><a class="dropdown-item" href="#!">유산균</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="boardList" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Board</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Board</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">공지사항</a></li>
+                        <li><a class="dropdown-item" href="#!">Q&A</a></li>
+                        <li><a class="dropdown-item" href="#!">상품 후기</a></li>
 
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex">
+
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    Login
+                    <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                </button>
+
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                    Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
+
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Sign up
+                    <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+                </button>
+
+            </form>
+        </div>
+    </div>
+</nav>
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder"><i class="fa-solid fa-capsules"></i>Green Health</h1>
+            <p class="lead fw-normal text-white-50 mb-0">건강한 하루를 위하여</p>
+        </div>
+    </div>
+</header>
+
+
+<!-- Section-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
 
         <!-- Product section-->
 
-        <div class="container px-4 px-lg-5 my-5" th:object="${item}">
+        <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center" >
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="img/zio.jpg" alt="..." /></div>
+
+                <c:forEach var="file" items="${file}" varStatus="loop">
+                    <c:if test="${file.productId == product.productId}">
+                        <img class="card-img" src="/img/${file.name}" style="width: 50%"/>
+                    </c:if>
+                </c:forEach>
+
                 <div class="col-md-6">
-                    <h1 class="display-5 fw-bolder" text="${item.getName()}" style=" font-family: Stylish, serif;">멀티비타민</h1>
+                    <h1 class="display-5 fw-bolder"  style=" font-family: Stylish, serif;">${product.name}</h1>
+                    <p  style=" font-family: Stylish, serif;">${product.information}</p>
                     <div class="fs-5 mb-5">
-                        <input type="hidden" th:value="${item.price}" id="price" name="price">
-                        <span class="text-decoration-none" th:text="${item.getPrice()}" style=" font-family: Stylish, serif;"></span>39800원
+                        <span class="text-decoration-none"  style=" font-family: Stylish, serif;"></span>
                     </div>
-
-
 
                     <hr class="my-4">
                     <div class="input-group fs-5 mb-5">
                         <div class="input-group-prepend">
-                            <input type="hidden" th:value="${item.stockQuantity}" id="stockQuantity" name="stockQuantity">
-                            <span class="input-group-text">주문 수량</span>
+                            <span class="input-group-text">주문 가능 수량</span>
                         </div>
-                        <input class="form-control text-center me-3" id="count" name="count" type="number" value="1" style=" max-width: 5rem" />
+                        <input class="form-control text-center me-3" id="count" name="count" type="text" value="${product.stock}" style=" max-width: 5rem" />
                     </div>
 
 
                     <div class="container bg-light">
                         <br>
                         <h5>총 상품 금액</h5>
-                        <h5 name="totalPrice" id="totalPrice" style="text-align: right" >39800원</h5>
+                        <h5 name="totalPrice" id="totalPrice" style="text-align: right" >${product.price}원</h5>
 
                     </div>
                     <br>
@@ -77,27 +163,35 @@
                     </div>
                 </div>
             </div>
+
         </div>
+
 
         <!-- Related items section-->
         <section class="py-5 bg-light">
             <div class="container">
-                <p class="lead" id="description" style="text-align: center"  th:text="${item.getDescription()}">제품 상세 페이지 입니다.</p>
+                <p class="lead" id="description" style="text-align: center">제품 상세 페이지 입니다.</p>
             </div>
             <hr class="my-4">
             <div class="container px-4 px-lg-5 mt-5"  >
                 <div class="text-center">
-                    <p>성능 좋은 멀티 비타민 입니다</p>
-                    <img class="card-img-top rounded mb-5 mb-md-0" style="padding-bottom: 50px; width: 100%;" src="img/pp.png" >
-
+                    <c:forEach var="file" items="${file}" varStatus="loop">
+                        <c:if test="${file.productId == product.productId}">
+                            <img class="card-img-top mb-5 mb-md-0" src="/img/${file.name}" alt="..." />
+                        </c:if>
+                    </c:forEach>
                 </div>
             </div>
         </section>
     </div>
 </section>
-<!-- footer start -->
-<jsp:include page="/module/footer.jsp"/>
-<!-- footer end -->
-<script src="https://kit.fontawesome.com/3accb69132.js" crossorigin="anonymous"></script>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Green Health 2024</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
 </body>
 </html>
