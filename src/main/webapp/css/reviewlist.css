@@ -1,0 +1,14 @@
+.mt-4 {
+    font-family: "Gowun Dodum", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.container-fluid {
+    width: 800px;
+    margin: 30px auto;
+}
+
+.button-container {
+    margin-bottom: 50px;
+}

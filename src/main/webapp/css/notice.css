@@ -1,0 +1,16 @@
+#notice-container {
+    margin: 25px;
+    outline: dashed 1px black;
+}
+
+.notice-content {
+    font-family: "Gowun Dodum", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    text-align: center;
+}
+
+#h {
+    font-weight: bold;
+}
