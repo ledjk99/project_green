@@ -4,11 +4,10 @@
     font-weight: bold;
 }
 
-.container-fluid {
-    width: 800px;
-    margin: 30px auto;
+.input-group {
+    margin-bottom: 10px;
 }
 
-.button-container {
-    margin-bottom: 50px;
+.table.table-sm.table-hover {
+    font-size: 16px;
 }

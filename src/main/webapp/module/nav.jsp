@@ -2,7 +2,15 @@
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.ezen.mall.web.board.dto.Board" %>
+<%@ page import="com.ezen.mall.web.board.service.BoardService" %>
+<%@ page import="com.ezen.mall.web.board.service.BoardServiceImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    BoardService boardService = new BoardServiceImpl();
+    List<Board> boardList = boardService.boardList();
+    request.setAttribute("boardList", boardList);
+%>
 <!-- nav start -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
@@ -40,10 +48,22 @@
                     <a class="nav-link dropdown-toggle" id="boardList" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">Board</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/board/notice.jsp">공지사항</a></li>
-                        <li><a class="dropdown-item" href="/board/qnalist.jsp">Q&A</a></li>
-                        <li><a class="dropdown-item" href="/board/reviewlist.jsp">상품 후기</a></li>
-
+                        <c:forEach var="board" items="${boardList}">
+                            <c:choose>
+                                <c:when test="${board.boardId == 1}">
+                                    <a class="dropdown-item"
+                                       href="/board/notice.jsp?boardId=${board.boardId}">${board.title}</a>
+                                </c:when>
+                                <c:when test="${board.boardId == 2}">
+                                    <a class="dropdown-item"
+                                       href="/board/qnalist.jsp?boardId=${board.boardId}">${board.title}</a>
+                                </c:when>
+                                <c:when test="${board.boardId == 3}">
+                                    <a class="dropdown-item"
+                                       href="/board/reviewlist.jsp?boardId=${board.boardId}">${board.title}</a>
+                                </c:when>
+                            </c:choose>
+                        </c:forEach>
                     </ul>
                 </li>
                 <!-- 게시판 목록 end-->
