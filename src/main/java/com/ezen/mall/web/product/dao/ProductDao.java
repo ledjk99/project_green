@@ -2,6 +2,7 @@ package com.ezen.mall.web.product.dao;
 
 import com.ezen.mall.web.product.dto.Category;
 import com.ezen.mall.web.product.dto.File;
+import com.ezen.mall.web.product.dto.OrderInfo;
 import com.ezen.mall.web.product.dto.Product;
 
 import java.sql.SQLException;
@@ -19,4 +20,6 @@ public interface ProductDao {
     public Product readCategory(int categoryId) throws SQLException;
 
     public List<File> getFile() throws SQLException;
+
+    public void createOrderInfo(OrderInfo orderInfo) throws Exception;
 }

@@ -4,6 +4,7 @@ import com.ezen.mall.web.product.dao.JdbcProductDao;
 import com.ezen.mall.web.product.dao.ProductDao;
 import com.ezen.mall.web.product.dto.Category;
 import com.ezen.mall.web.product.dto.File;
+import com.ezen.mall.web.product.dto.OrderInfo;
 import com.ezen.mall.web.product.dto.Product;
 
 import java.sql.SQLException;
@@ -68,6 +69,17 @@ public class CategoryServiceImpl implements CategoryService{
         try {
             return productDao.getFile();
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void createOrderInfo(OrderInfo orderInfo) {
+        try {
+            productDao.createOrderInfo(orderInfo);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

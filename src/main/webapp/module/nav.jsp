@@ -38,7 +38,7 @@
                             <hr class="dropdown-divider"/>
                         </li>
                         <c:forEach var="category" items="${categorylist}">
-                            <li><a class="dropdown-item" href="/product/vitamin.jsp?categoryId=${category.categoryId}">${category.categoryName}</a></li>
+                            <li><a class="dropdown-item" href="/product/readcategory.jsp?categoryId=${category.categoryId}">${category.categoryName}</a></li>
 
                         </c:forEach>
 

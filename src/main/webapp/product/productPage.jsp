@@ -19,6 +19,12 @@
 
 %>
 
+<c:url var="pay" value="pay.jsp">
+    <c:param name="productId" value="${product.productId}"/>
+    <c:param name="productName" value="${product.name}"/>
+    <c:param name="productPrice" value="${product.price}"/>
+</c:url>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,10 +139,7 @@
 
                     <hr class="my-4">
                     <div class="input-group fs-5 mb-5">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">주문 가능 수량</span>
-                        </div>
-                        <input class="form-control text-center me-3" id="count" name="count" type="text" value="${product.stock}" style=" max-width: 5rem" />
+
                     </div>
 
 
@@ -147,18 +150,20 @@
 
                     </div>
                     <br>
+                    <strong>※2개이상의 제품 구매를 원하실 경우 장바구니에 넣어주세요.</strong>
 
                     <div class="d-flex">
                         <form action="" class="d-flex" method="post">
                             <button class="btn btn-outline-dark"type="submit">
                                 <i class="fa-solid fa-credit-card"></i>
-                                바로 구매하기
+                                <a href="${pay}" style="color: black">바로 구매하기</a>
                             </button>
                         </form>
                         &nbsp
                         <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                            <i class="bi-cart-fill me-1"></i>
-                            장바구니 담기
+                            <i class="bi-cart-fill me-1" ></i>
+                            <a href="/cart/cart.jsp?productId=${product.productId}" style="color: black">장바구니 담기</a>
+
                         </button>
                     </div>
                 </div>

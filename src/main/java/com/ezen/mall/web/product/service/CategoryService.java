@@ -2,6 +2,7 @@ package com.ezen.mall.web.product.service;
 
 import com.ezen.mall.web.product.dto.Category;
 import com.ezen.mall.web.product.dto.File;
+import com.ezen.mall.web.product.dto.OrderInfo;
 import com.ezen.mall.web.product.dto.Product;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public interface CategoryService {
 
     public List<File> getfile();
 
+    public void createOrderInfo(OrderInfo orderInfo);
 
 
 }

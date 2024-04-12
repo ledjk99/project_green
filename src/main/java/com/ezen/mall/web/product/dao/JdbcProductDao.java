@@ -3,6 +3,7 @@ package com.ezen.mall.web.product.dao;
 import com.ezen.mall.domain.common.database.ConnectionFactory;
 import com.ezen.mall.web.product.dto.Category;
 import com.ezen.mall.web.product.dto.File;
+import com.ezen.mall.web.product.dto.OrderInfo;
 import com.ezen.mall.web.product.dto.Product;
 
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class JdbcProductDao implements ProductDao {
@@ -253,7 +255,38 @@ public class JdbcProductDao implements ProductDao {
         return list;
     }
 
-    public static void main(String[] args) throws SQLException {
+    @Override
+    public void createOrderInfo(OrderInfo orderInfo) throws Exception {
+        StringBuilder sql = new StringBuilder();
+        sql.append(" INSERT INTO ORDERS (ORDER_ID, PRICE, ORDER_COMMENT, REGDATE, RECEIVER, ADDRESS, PHONE)")
+                .append(" VALUES (ORDER_ID_SEQ.NEXTVAL, ?, ?, TO_DATE(SYSDATE, 'YYYY-MM-DD'), ?, ?, ?)");
+
+        Connection con = connectionFactory.getConnection();
+
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = con.prepareStatement(sql.toString());
+
+            pstmt.setInt(1,orderInfo.getPrice());
+            pstmt.setString(2,orderInfo.getComment());
+            pstmt.setString(3,orderInfo.getReceiver());
+            pstmt.setString(4,orderInfo.getAddress());
+            pstmt.setString(5,orderInfo.getPhoneNum());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
 
         ProductDao productDao = new JdbcProductDao();
 //        Product product = productDao.readProduct(8,4);
@@ -267,7 +300,21 @@ public class JdbcProductDao implements ProductDao {
 
        // System.out.println(productDao.listAll());
 
-        System.out.println(productDao.getFile());
+       // System.out.println(productDao.getFile());
+        Calendar cal = Calendar.getInstance();
+//        OrderInfo orderInfo = new OrderInfo(999,9000,"비타민샀어요",cal.getTime(),"본인","서울","010");
+//        System.out.println(orderInfo);
+
+//        OrderInfo orderInfo = new OrderInfo();
+//        orderInfo.setOrderId(999);
+//        orderInfo.setPrice(5000);
+//        orderInfo.setAddress("dd");
+//        orderInfo.setComment("dd");
+//        orderInfo.setDate(cal.getTime());
+//        orderInfo.setReceiver("aa");
+//        orderInfo.setPhoneNum("010010");
+//        productDao.createOrderInfo(orderInfo);
+//        System.out.println("완료우");
 
     }
 }
