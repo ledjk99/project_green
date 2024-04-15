@@ -58,7 +58,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">All Products</a></li>
+                        <li><a class="dropdown-item" href="#!q">All Products</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#!">인기 상품</a></li>
                         <li><a class="dropdown-item" href="#!">비타민</a></li>
@@ -118,9 +118,6 @@
 <!-- Section-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
-
-        <!-- Product section-->
-
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center" >
 
@@ -162,7 +159,7 @@
                         &nbsp
                         <button class="btn btn-outline-dark flex-shrink-0" type="button">
                             <i class="bi-cart-fill me-1" ></i>
-                            <a href="/cart/cart.jsp?productId=${product.productId}" style="color: black">장바구니 담기</a>
+                            <a href="/cart/cart.jsp?productId=${product.productId}&productPrice=${product.price}" style="color: black">장바구니 담기</a>
 
                         </button>
                     </div>
@@ -171,8 +168,6 @@
 
         </div>
 
-
-        <!-- Related items section-->
         <section class="py-5 bg-light">
             <div class="container">
                 <p class="lead" id="description" style="text-align: center">제품 상세 페이지 입니다.</p>
@@ -200,3 +195,4 @@
 <script src="js/scripts.js"></script>
 </body>
 </html>
+

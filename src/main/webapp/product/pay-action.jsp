@@ -24,7 +24,7 @@
     CategoryService categoryService = new CategoryServiceImpl();
     categoryService.createOrderInfo(orderInfo);
 
-    System.out.println(orderInfo);q
+    System.out.println(orderInfo);
 
     response.sendRedirect("orderlist.jsp?orderId="+orderInfo.getOrderId());
 

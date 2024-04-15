@@ -288,7 +288,7 @@ public class JdbcProductDao implements ProductDao {
 
     public static void main(String[] args) throws Exception {
 
-        ProductDao productDao = new JdbcProductDao();
+//        ProductDao productDao = new JdbcProductDao();
 //        Product product = productDao.readProduct(8,4);
 //        System.out.println(product.getName());
 //        System.out.println(product.getProductId());
@@ -315,6 +315,8 @@ public class JdbcProductDao implements ProductDao {
 //        orderInfo.setPhoneNum("010010");
 //        productDao.createOrderInfo(orderInfo);
 //        System.out.println("완료우");
+
+        System.out.println("안녕하세요~");
 
     }
 }
