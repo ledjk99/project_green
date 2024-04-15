@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head start -->
@@ -70,9 +72,9 @@
                             </button>
                         </form>
                         &nbsp
-                        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <button class="btn btn-outline-dark flex-shrink-0" type="button" >
                             <i class="bi-cart-fill me-1"></i>
-                            장바구니 담기
+                            <a href="/cart/addCart.jsp">장바구니 담기</a>
                         </button>
                     </div>
                 </div>

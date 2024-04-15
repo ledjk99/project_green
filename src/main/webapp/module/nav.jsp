@@ -77,7 +77,6 @@
                 <button class="btn btn-outline-dark" type="button" onclick="location.href='../cart/cart.jsp'">
                     <i class="bi-cart-fill me-1"></i>
                     Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
                 <!-- 카트 end -->
 

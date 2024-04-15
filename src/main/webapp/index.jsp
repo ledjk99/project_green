@@ -14,6 +14,7 @@
     <link href="/css/notice.css" rel="stylesheet"/>
     <link href="/css/qnalist.css" rel="stylesheet"/>
     <link href="/css/reviewlist.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./10-11.css" /><link rel="stylesheet" href="./10-11.css" />
 <%--    <link href="/css/cart.css" rel="stylesheet" />--%>
 <%--    <link href="/css/login.css" rel="stylesheet"/>--%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +22,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="https://order.pstatic.net/202404/04_163641_1712216201/order_customer/mobile_static/css/service/mobile/detail.css">
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <script type="text/javascript" src="./10-11.js" defer></script>
 
     <script src="/js2/validator.js" defer></script>
 

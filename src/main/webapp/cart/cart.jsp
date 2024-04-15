@@ -1,35 +1,45 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.ezen.mall.domain.mall.dto.Product" %>
+<%@ page import="com.ezen.mall.domain.cart.service.ShoppingCart" %>
 <%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="ko">
-    <!-- head start -->
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Green Health</title>
-        <link href="/css/styles.css" rel="stylesheet" />
-        <link href="/css/cart.css" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/3accb69132.js" crossorigin="anonymous"></script>
-    </head>
-    <!-- head end -->
+
+<c:choose>
+    <c:when test="${empty sessionScope.cart}">
+        <script>
+            alert('장바구니에 저장된 상품이 없습니다.');
+            history.back();
+        </script>
+    </c:when>
+
+    <c:otherwise>
+
+         <%
+             ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+             List<Product> productList = cart.listAll();
+             request.setAttribute("list", productList);
+         %>
 
 
-    <!-- body start -->
-    <body>
+        <!DOCTYPE html>
+        <html lang="ko">
+        <!-- head start -->
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+            <meta name="description" content=""/>
+            <meta name="author" content=""/>
+            <title>Green Health</title>
+            <link href="/css/styles.css" rel="stylesheet"/>
+            <link href="/css/cart.css" rel="stylesheet"/>
+            <script src="https://kit.fontawesome.com/3accb69132.js" crossorigin="anonymous"></script>
+        </head>
+        <body>
         <jsp:include page="/module/nav.jsp"/>
-        <!-- nav end -->
-        <!-- header start -->
         <jsp:include page="/module/header.jsp"/>
-        <!-- header end -->
         <!-- section start -->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-
-
-
                 <section class="cart">
                     <div class="cart__information">
                         <ul>
@@ -42,100 +52,81 @@
                         <form>
                             <thead>
                             <tr>
-                                <td><input type="checkbox"></td>
+                                <td></td>
                                 <td colspan="2">상품정보</td>
                                 <td>수량</td>
-                                <td>상품금액</td>
-                                <td>배송비</td>
+                                <td>합계</td>
+                                <td>비고</td>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="cart__list__detail">
-                                <td><input type="checkbox"></td>
-                                <td><img src="../img/zio.jpg" alt="magic keyboard"></td>
-                                <td><a href="#">상품 상세보기</a><span class="cart__list__smartstore"></span>
-                                    <p>비타민C</p>
-                                    <sapn class="price">116,62원</sapn><span
-                                            style="text-decoration: line-through; color: lightgray;">119,000</span>
-                                </td>
-                                <td class="cart__list__option">
-                                    <!-- <button class="cart__list__optionbtn">주문조건 추가/변경</button> -->
-                                    <input type="number" style="text-align: right; width: 43px; margin-bottom: 5px;" min="1" max="99" step="1" value="1">
-                                    <button class="default" style="border-radius: 3px; size:10px;"> 변경</button>
-                                </td>
-                                <td><span class="price">116,620원</span><br>
-                                    <button class="cart__list__orderbtn">주문하기</button>
-                                </td>
-                                <td>무료</td>
-                            </tr>
 
-                            <tr class="cart__list__detail">
-                                <td style="width: 2%;"><input type="checkbox"></td>
-                                <td style="width: 13%;">
-                                    <img src="../img/zio.jpg" alt="magic mouse">
-                                </td>
-                                <td style="width: 27%;"><a href="#">상품 상세보기</a><span class="cart__list__smartstore"> </span>
-                                    <p>오메가3</p>
-                                    <span class=" price">88,900원</span>
-                                </td>
-                                <td class="cart__list__option" style="width: 27%;">
-                                    <input type="number" style="text-align: right; width: 43px; margin-bottom: 5px;" min="1" max="99" step="1" value="1">
-                                    <button class="default" style="border-radius: 3px; size:10px;"> 변경</button>
-                                </td>
-                                <td style="width: 15%;"><span class="price">88,900원</span><br>
-                                    <button class="cart__list__orderbtn">주문하기</button>
-                                </td>
-                                <td style="width: 15%;">무료</td>
-                            </tr>
 
+                            <c:forEach items="${list}" var="product" varStatus="loop">
+                                <tr class="cart__list__detail">
+                                    <td></td>
+                                    <td><img src="/img/${product.image}" alt="${product.name}"></td>
+                                    <td>
+                                        <a href="#">상품 상세보기</a><span class="cart__list__smartstore"></span>
+                                        <p>${product.name}</p>
+                                        <span class="price" id="price_${loop.index}">${product.price}원</span>
+                                    </td>
+                                    <td class="cart__list__option">
+                                        <input type="number" style="text-align: right; width: 43px; margin-bottom: 5px;"
+                                               min="1"
+                                               max="99" step="1" value="${product.stock}" id="quantity_${loop.index}"
+                                               onchange="updatePrice(${loop.index})">
+                                        <button class="default" style="border-radius: 3px; size:10px;"> 변경</button>
+                                    </td>
+                                    <td>
+                                        <span class="price"
+                                              id="total_${loop.index}">${product.price * product.stock}원</span><br>
+                                        <button class="cart__list__orderbtn"><a href="../product/pay.jsp">주문하기</a>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="defaultcmd" style="border-radius: 3px; size:10px;"
+                                                onclick="location.href='/cart/removeCart.jsp?pid=${product.productId}'">삭제
+                                        </button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                             <tfoot>
-
-                            <!-- 결제예정금액 테이블 -->
-                            <table id="calculation2">
-                                <tr>
-                                    <th>총 상품금액</th>
-                                    <th>총 배송비</th>
-                                    <th><span>결제예정금액</span></th>
-                                </tr>
-                                <tr style="background-color: #fff;">
-                                    <td >0</span>원</td>
-                                    <td>+<span class="price">0</span>원</td>
-                                    <td>=<span class="price">0</span>원</td>
-                                    <td></td>
-                                </tr>
-                            </table>
                             <tr>
-                                <td><input type="checkbox"> <button class="cart__list__optionbtn">선택상품 삭제</button></td>
-                                <td><input type="checkbox"> <button class="cart__list__optionbtn">전체삭제</button></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td><strong class="bb_price"> 총 상품갯수: <em><span><c:out
+                                        value="${list.size()}"/></span></em>개</strong></td>
+                                <td><strong class="bb_price"> 전체합계: <em><span><c:out
+                                        value="${cart.calculateTotalPrice()}"/></span></em>원</strong></td>
+                                <td>
+                                    <button class="cart__list__optionbtn" onclick="removeallCart()">장바구니비우기</button>
+                                </td>
                             </tr>
                             </tfoot>
                         </form>
                     </table>
-
-
                     <div class="cart__mainbtns">
-                        <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
-                        <button class="cart__bigorderbtn right">주문하기</button>
+                        <button class="cart__bigorderbtn left"><a href="../index.jsp">쇼핑 계속하기</a></button>
+                        <button class="cart__bigorderbtn right"><a href="../product/pay.jsp">주문하기</a></button>
                     </div>
                 </section>
-
-
             </div>
-        <!-- section end -->
         </section>
-
-
-        <!-- footer start -->
+        <!-- section end -->
         <jsp:include page="/module/footer.jsp"/>
-        <!-- footer end -->
 
 
-    </body>
-<!-- body end -->
+        </body>
+        </html>
+
+    </c:otherwise>
+
+</c:choose>
 
 
-</html>
+
+
+
