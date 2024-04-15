@@ -1,14 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.ezen.mall.web.board.dto.Board" %>
 <%@ page import="com.ezen.mall.web.board.service.BoardService" %>
 <%@ page import="com.ezen.mall.web.board.service.BoardServiceImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.ezen.mall.web.product.service.CategoryService" %>
+<%@ page import="com.ezen.mall.web.product.service.CategoryServiceImpl" %>
+<%@ page import="com.ezen.mall.web.product.dto.Product" %>
+<%@ page import="com.ezen.mall.web.product.dto.Category" %>
 
 <%
-    BoardService boardService = new BoardServiceImpl();
-    List<Board> boardList = boardService.boardList();
-    request.setAttribute("boardList", boardList);
+BoardService boardService = new BoardServiceImpl();
+List<Board> boardList = boardService.boardList();
+request.setAttribute("boardList", boardList);
+CategoryService categoryService = new CategoryServiceImpl();
+List<Category> categoryList = categoryService.categoryList();
+request.setAttribute("categorylist",categoryList);
 %>
 
 <!-- nav start -->
@@ -31,14 +39,15 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">All Products</a></li>
+                        <li><a class="dropdown-item" href="/">All Products</a></li>
                         <li>
                             <hr class="dropdown-divider"/>
                         </li>
-                        <li><a class="dropdown-item" href="#">인기 상품</a></li>
-                        <li><a class="dropdown-item" href="/product/vitamin.jsp">비타민</a></li>
-                        <li><a class="dropdown-item" href="/product/lutein.jsp">루테인</a></li>
-                        <li><a class="dropdown-item" href="/product/omega.jsp">오메가</a></li>
+                        <c:forEach var="category" items="${categorylist}">
+                            <li><a class="dropdown-item" href="/product/readcategory.jsp?categoryId=${category.categoryId}">${category.categoryName}</a></li>
+
+                        </c:forEach>
+
                     </ul>
                 </li>
                 <!-- 상품 목록 end-->
@@ -78,7 +87,7 @@
                 <c:choose>
                     <c:when test="${empty loginMember}">
 
-                        <button class="btn btn-outline-dark" type="button" onclick="location.href='../member/login.jsp'">
+                        <button class="btn btn-outline-dark" type="button" onclick="location.href='/member/login.jsp'">
                             <i class="fa-solid fa-right-to-bracket"></i>
                             Login
                             <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
@@ -94,7 +103,7 @@
                 </c:choose>
                 <!-- 로그인 end -->
                 <!-- 카트 start -->
-                <button class="btn btn-outline-dark" type="button" onclick="location.href='../cart/cart.jsp'">
+                <button class="btn btn-outline-dark" type="button" onclick="location.href='/product/cart.jsp'">
                     <i class="bi-cart-fill me-1"></i>
                     Cart
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
@@ -106,7 +115,7 @@
                 <c:choose>
                     <c:when test="${empty loginMember}">
                         <button id="signup-button" class="btn btn-outline-dark" type="button"
-                                onclick="location.href='../member/login.jsp'">
+                                onclick="location.href='/member/login.jsp'">
                             <i class="fa-solid fa-user-plus"></i>
                             Sign up
                             <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
