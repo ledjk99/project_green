@@ -88,10 +88,10 @@
     <div class="button-container">
         <c:choose>
             <c:when test="${param.boardId == 2}">
-                <a href="qnalist.jsp" class="btn btn-outline-dark">목록</a>
+                <a href="qnalist.jsp?boardId=${param.boardId}" class="btn btn-outline-dark">목록</a>
             </c:when>
             <c:when test="${param.boardId == 3}">
-                <a href="reviewlist.jsp" class="btn btn-outline-dark">목록</a>
+                <a href="reviewlist.jsp?boardId=${param.boardId}" class="btn btn-outline-dark">목록</a>
             </c:when>
         </c:choose>
 
