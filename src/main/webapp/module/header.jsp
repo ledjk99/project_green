@@ -7,7 +7,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder"><i class="fa-solid fa-seedling" style="color: #0a7b59;"></i>Green Health</h1>
-            <p class="lead fw-normal text-white-50 mb-0">건강한 하루를 위하여</p>
+            <p class="lead fw-normal text-white-50 mb-0" >건강한 하루를 위하여</p>
         </div>
     </div>
 

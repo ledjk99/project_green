@@ -10,7 +10,7 @@
 <% request.setCharacterEncoding("utf-8"); %>
 <jsp:useBean id="member" class="com.ezen.mall.web.member.dto.Member" scope="session"/>
 <jsp:setProperty name="member" property="*" />
-<%--<jsp:setProperty name="member" property="picture" value="defalut.jpg" />--%>
+
 
 <%
  // 입력데이터 데이터 유효성 검증 추가
@@ -35,7 +35,7 @@
     // 검증 오류 메시지가 한개라도 존재 시 회원가입 화면으로 포워드
     if(!errors.isEmpty()) {
         request.setAttribute("errors", errors);
-        request.getRequestDispatcher("/member/register.jsp").forward(request, response);
+        request.getRequestDispatcher("/member/login.jsp").forward(request, response);
     }
 
 
