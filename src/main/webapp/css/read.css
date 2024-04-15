@@ -1,0 +1,13 @@
+.mt-4 {
+    font-family: "Gowun Dodum", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.button-container {
+    margin-bottom: 50px;
+}
+
+#deleteForm {
+    display: inline-block;
+}
