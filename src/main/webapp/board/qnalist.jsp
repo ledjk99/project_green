@@ -1,6 +1,62 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.ezen.mall.web.board.service.BoardService" %>
+<%@ page import="com.ezen.mall.web.board.service.BoardServiceImpl" %>
+<%@ page import="com.ezen.mall.web.board.dto.Article" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.ezen.mall.web.common.page.PageParams" %>
+<%@ page import="com.ezen.mall.web.common.page.Pagination" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+    // 사용자 요청 게시판 번호
+    int boardId = 2;
+    if (request.getParameter("boardId") != null) {
+        boardId = Integer.parseInt(request.getParameter("boardId"));
+    }
+
+//    int articleId = 0;
+//    if (request.getParameter("articleId") != null) {
+//        articleId = Integer.parseInt(request.getParameter("articleId"));
+//    }
+
+    // 사용자 요청 페이지 번호
+    int requestPage = 1;
+    if (request.getParameter("page") != null) {
+        requestPage = Integer.parseInt(request.getParameter("page"));
+    }
+
+    // 테이블 당 보여지는 행의 개수
+    int rowCount = 10;
+    if (request.getParameter("rowcount") != null) {
+        rowCount = Integer.parseInt(request.getParameter("rowcount"));
+    }
+
+    // 페이지에 보여지는 페이지 번호 수
+    int pageSize = 10;
+
+    // 사용자 검색 유형
+    String searchType = request.getParameter("type");
+
+    // 사용자 검색 값
+    String searchValue = request.getParameter("value");
+
+    BoardService boardService = new BoardServiceImpl();
+    List<Article> list = boardService.articleList(rowCount, requestPage, searchType, searchValue, boardId);
+
+    request.setAttribute("list", list);
+
+    // 페이징 처리를 위한 테이블 행의 개수
+    int tableRowCount = boardService.getArticleCount(searchType, searchValue);
+
+    PageParams params = new PageParams(rowCount, pageSize, requestPage, tableRowCount);
+    Pagination pagination = new Pagination(params);
+
+    request.setAttribute("pagination", pagination);
+
+
+%>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head start -->
@@ -9,14 +65,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Green Health</title>
     <link href="/css/styles.css" rel="stylesheet"/>
-    <link href="/css/notice.css" rel="stylesheet"/>
     <link href="/css/qnalist.css" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="https://order.pstatic.net/202404/04_163641_1712216201/order_customer/mobile_static/css/service/mobile/detail.css">
+    <link type="text/css" rel="stylesheet"
+          href="https://order.pstatic.net/202404/04_163641_1712216201/order_customer/mobile_static/css/service/mobile/detail.css">
 
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container-fluid {
+            width: 70%;
+            padding: 10px;
+        }
+
+        span {
+            font-weight: bold;
+            color: mediumblue;
+        }
+    </style>
 </head>
 <body>
 <!-- nav start -->
@@ -26,141 +93,107 @@
 <jsp:include page="/module/header.jsp"/>
 <!-- header end -->
 <!-- section start -->
-<div class="container-fluid">
 
-    <h3 class="mt-4">후기게시판
-        <span>
-            <a href="register.jsp" class="btn btn-sm btn-secondary">게시글 쓰기</a>
+<div id="page-content-wrapper">
+
+    <div class="container-fluid">
+
+        <h3 class="mt-4">문의게시판
+            <span>
+            <a href="register.jsp?boardId=${param.boardId}" class="btn btn-sm btn-secondary">게시글 쓰기</a>
         </span>
-    </h3>
+        </h3>
 
-    <form action="#" id="searchForm">
-        <div class="input-group">
-            <input type="hidden" name="page" value="1">
-            <div class="input-group-prepend">
-                <select class="custom-select" name="type">
-                    <option selected>----- 검색유형 -----</option>
-                    <option>제목</option>
-                    <option>내용</option>
-                    <option>작성자</option>
-                    <option>제목 + 내용</option>
-                    <option>제목 + 내용 + 작성자</option>
-                </select>
+        <form id="searchForm">
+            <div class="input-group">
+                <input type="hidden" name="page" value="1">
+                <div class="input-group-prepend">
+                    <select class="custom-select" name="type">
+                        <option selected value="">----- 검색유형 -----</option>
+                        <option value="t">제목</option>
+                        <option value="c">내용</option>
+                        <option value="w">작성자</option>
+                        <option value="tc">제목 + 내용</option>
+                        <option value="tcw">제목 + 내용 + 작성자</option>
+                    </select>
+                </div>
+                <input type="search" class="form-control" name="value">
+                <div class="input-group-append" id="button-addon4">
+                    <button class="btn btn-outline-dark btn-search" type="submit">검색</button>
+                </div>
             </div>
-            <input type="search" class="form-control" name="value">
-            <div class="input-group-append" id="button-addon4">
-                <button class="btn btn-outline-dark btn-search" type="button">검색</button>
-            </div>
-        </div>
-    </form>
+        </form>
 
-    <table class="table table-sm table-hover">
-        <thead>
-        <tr>
-            <th>제목</th>
-            <th>번호</th>
-            <th>작성자</th>
-            <th>조회수</th>
-            <th>등록일자</th>
-        </tr>
-        </thead>
+        <table class="table table-sm table-hover">
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>조회수</th>
+                <th>등록일자</th>
+            </tr>
+            </thead>
 
-        <tbody>
-        <tr>
-            <td>255</td>
-            <td><a href="read.jsp">제목입니다.</a>
-                <span>[1]</span>
-            </td>
-            <td>홍길동</td>
-            <td>5</td>
-            <td>2023-05-05</td>
-        </tr>
-        <tr>
-            <td>254</td>
-            <td><a href="read.jsp">제목입니다.</a></td>
-            <td>홍길동</td>
-            <td>5</td>
-            <td>2023-05-05</td>
-        </tr>
-        <tr>
-            <td>253</td>
-            <td>
-                <a href="read.jsp">댓글 제목입니다.</a>
-            </td>
-            <td>홍길동</td>
-            <td>1</td>
-            <td>2023-05-05</td>
-        </tr>
-        <tr>
-            <td>252</td>
-            <td>
-                <a href="read.jsp">대댓글 제목입니다.</a>
-            </td>
-            <td>홍길동</td>
-            <td>1</td>
-            <td>2023-05-05</td>
-        </tr>
-        <tr>
-            <td>251</td>
-            <td><a href="read.jsp">제목입니다.</a></td>
-            <td>홍길동</td>
-            <td>5</td>
-            <td>2023-05-05</td>
-        </tr>
-        <tr>
-            <td>250</td>
-            <td><a href="read.jsp">제목입니다.</a></td>
-            <td>홍길동</td>
-            <td>5</td>
-            <td>2023-05-05</td>
-        </tr>
-        <tr>
-            <td>249</td>
-            <td><a href="read.jsp">제목입니다.</a></td>
-            <td>홍길동</td>
-            <td>5</td>
-            <td>2023-05-05</td>
-        </tr>
-        <tr>
-            <td>248</td>
-            <td><a href="read.jsp">제목입니다.</a></td>
-            <td>홍길동</td>
-            <td>5</td>
-            <td>2023-05-05</td>
-        </tr>
-        <tr>
-            <td>247</td>
-            <td><a href="read.jsp">제목입니다.</a></td>
-            <td>홍길동</td>
-            <td>5</td>
-            <td>2023-05-05</td>
-        </tr>
-        <tr>
-            <td>246</td>
-            <td><a href="read.jsp">제목입니다.</a></td>
-            <td>홍길동</td>
-            <td>5</td>
-            <td>2023-05-05</td>
-        </tr>
-        </tbody>
+            <tbody>
+            <c:forEach var="article" items="${list}" varStatus="i">
+                <tr>
+                    <td>${pagination.params.rowCount - ((pagination.params.requestPage - 1) * pagination.params.elementSize) - i.index}</td>
+                    <td>
+                        <a href="read.jsp?boardId=${article.boardId}&articleId=${article.articleId}">${article.title}</a>
+                        <span>${[article.commentCount]}</span>
+                    </td>
+                    <td>${article.memberId}</td>
+                    <td>${article.hitCount}</td>
+                    <td>${article.regdate}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
 
-    </table>
+        <ul class="pagination h-100 justify-content-center align-items-center">
 
-    <ul class="pagination h-100 justify-content-center align-items-center">
-        <li class="page-item"><a class="page-link">처음으로</a></li>
-        <li class="page-item"><a class="page-link">이전목록</a></li>
+            <c:if test="${pagination.showFirst}">
+                <li class="page-item">
+                    <a class="page-link" href="?page=1&type=${param.type}&value=${param.value}">처음으로</a>
+                </li>
+            </c:if>
 
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <c:if test="${pagination.showPrevious}">
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?page=${pagination.previousStartPage}&type=${param.type}&value=${param.value}">이전목록</a>
+                </li>
+            </c:if>
 
-        <li class="page-item"><a class="page-link">다음목록</a></li>
-        <li class="page-item"><a class="page-link">끝으로</a></li>
-    </ul>
+            <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}">
+                <c:url var="list" value="qnalist.jsp" scope="request">
+                    <c:param name="page" value="${i}"/>
+                    <c:param name="type" value="${param.type}"/>
+                    <c:param name="value" value="${param.value}"/>
+                </c:url>
+                <li class="page-item <c:if test="${i == pagination.params.requestPage}">active</c:if>">
+                    <a class="page-link" href="${list}">${i}</a>
+                </li>
+            </c:forEach>
 
+            <c:if test="${pagination.showNext}">
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?page=${pagination.nextStartPage}&type=${param.type}&value=${param.value}">다음목록</a>
+                </li>
+            </c:if>
+
+            <c:if test="${pagination.showLast}">
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?page=${pagination.totalPages}&type=${param.type}&value=${param.value}">끝으로</a>
+                </li>
+            </c:if>
+        </ul>
+    </div>
 </div>
+
 <!-- section end -->
 <!-- footer start -->
 <jsp:include page="/module/footer.jsp"/>

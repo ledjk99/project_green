@@ -1,36 +1,28 @@
 package com.ezen.mall.web.board.dto;
-/**
- * 게시글 캡슐화
- * JavaBean 규약에 따라 작성
- */
-public class Article {
 
+public class Article {
     private int articleId;
-    private int boardId;
-    private String writer;
     private String title;
     private String content;
     private String regdate;
     private int hitCount;
     private String passwd;
-    private int groupNo;
-    private int levelNo;
-    private int orderNo;
+    private int boardId;
+    private String memberId;
+    private int commentCount;
 
-    public Article() { }
+    public Article() {}
 
-    public Article(int articleId, int boardId, String writer, String title, String content, String regdate, int hitCount, String passwd, int groupNo, int levelNo, int orderNo) {
+    public Article(int articleId, String title, String content, String regdate, int hitCount, String passwd, int boardId, String memberId, int commentCount) {
         this.articleId = articleId;
-        this.boardId = boardId;
-        this.writer = writer;
         this.title = title;
         this.content = content;
         this.regdate = regdate;
         this.hitCount = hitCount;
         this.passwd = passwd;
-        this.groupNo = groupNo;
-        this.levelNo = levelNo;
-        this.orderNo = orderNo;
+        this.boardId = boardId;
+        this.memberId = memberId;
+        this.commentCount = commentCount;
     }
 
     public int getArticleId() {
@@ -39,22 +31,6 @@ public class Article {
 
     public void setArticleId(int articleId) {
         this.articleId = articleId;
-    }
-
-    public int getBoardId() {
-        return boardId;
-    }
-
-    public void setBoardId(int boardId) {
-        this.boardId = boardId;
-    }
-
-    public String getWriter() {
-        return writer;
-    }
-
-    public void setWriter(String writer) {
-        this.writer = writer;
     }
 
     public String getTitle() {
@@ -97,44 +73,42 @@ public class Article {
         this.passwd = passwd;
     }
 
-    public int getGroupNo() {
-        return groupNo;
+    public int getBoardId() {
+        return boardId;
     }
 
-    public void setGroupNo(int groupNo) {
-        this.groupNo = groupNo;
+    public void setBoardId(int boardId) {
+        this.boardId = boardId;
     }
 
-    public int getLevelNo() {
-        return levelNo;
+    public String getMemberId() {
+        return memberId;
     }
 
-    public void setLevelNo(int levelNo) {
-        this.levelNo = levelNo;
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
 
-    public int getOrderNo() {
-        return orderNo;
+    public int getCommentCount() {
+        return commentCount;
     }
 
-    public void setOrderNo(int orderNo) {
-        this.orderNo = orderNo;
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
     }
 
     @Override
     public String toString() {
         return "Article{" +
                 "articleId=" + articleId +
-                ", boardId=" + boardId +
-                ", writer='" + writer + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", regdate='" + regdate + '\'' +
                 ", hitCount=" + hitCount +
                 ", passwd='" + passwd + '\'' +
-                ", groupNo=" + groupNo +
-                ", levelNo=" + levelNo +
-                ", orderNo=" + orderNo +
+                ", boardId=" + boardId +
+                ", memberId='" + memberId + '\'' +
+                ", commentCount=" + commentCount +
                 '}';
     }
 }

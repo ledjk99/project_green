@@ -2,15 +2,13 @@ package com.ezen.mall.web.board.dto;
 
 public class Board {
     private int boardId;
-    private int category;
     private String title;
     private String description;
 
-    public Board() { }
+    public Board() {}
 
-    public Board(int boardId, int category, String title, String description) {
+    public Board(int boardId, String title, String description) {
         this.boardId = boardId;
-        this.category = category;
         this.title = title;
         this.description = description;
     }
@@ -21,14 +19,6 @@ public class Board {
 
     public void setBoardId(int boardId) {
         this.boardId = boardId;
-    }
-
-    public int getCategory() {
-        return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
     }
 
     public String getTitle() {
@@ -51,7 +41,6 @@ public class Board {
     public String toString() {
         return "Board{" +
                 "boardId=" + boardId +
-                ", category=" + category +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 '}';
