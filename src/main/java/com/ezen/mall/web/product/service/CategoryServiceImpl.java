@@ -2,10 +2,7 @@ package com.ezen.mall.web.product.service;
 
 import com.ezen.mall.web.product.dao.JdbcProductDao;
 import com.ezen.mall.web.product.dao.ProductDao;
-import com.ezen.mall.web.product.dto.Category;
-import com.ezen.mall.web.product.dto.File;
-import com.ezen.mall.web.product.dto.OrderInfo;
-import com.ezen.mall.web.product.dto.Product;
+import com.ezen.mall.web.product.dto.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -79,6 +76,15 @@ public class CategoryServiceImpl implements CategoryService{
             productDao.createOrderInfo(orderInfo);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void createPayment(Payment payment) {
+        try {
+            productDao.createPaymentInfo(payment);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -1,10 +1,7 @@
 package com.ezen.mall.web.product.dao;
 
 import com.ezen.mall.domain.common.database.ConnectionFactory;
-import com.ezen.mall.web.product.dto.Category;
-import com.ezen.mall.web.product.dto.File;
-import com.ezen.mall.web.product.dto.OrderInfo;
-import com.ezen.mall.web.product.dto.Product;
+import com.ezen.mall.web.product.dto.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -286,6 +283,35 @@ public class JdbcProductDao implements ProductDao {
         }
     }
 
+    @Override
+    public void createPaymentInfo(Payment payment) throws Exception {
+        StringBuilder sql = new StringBuilder();
+        sql.append(" INSERT INTO PAYMENTS (PAYMENT_ID, REGDATE, MEMBER_ID, ORDER_ID)")
+                .append(" VALUES (PAYMENT_ID_SEQ.NEXTVAL, TO_DATE('2024-04-06', 'YYYY-MM-DD'), ?, ?)");
+
+        Connection con = connectionFactory.getConnection();
+
+        PreparedStatement pstmt = null;
+
+        try {
+            pstmt = con.prepareStatement(sql.toString());
+
+            pstmt.setString(1,payment.getMemberId());
+            pstmt.setInt(2,payment.getOrderId());
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new Exception(e.getMessage());
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
     public static void main(String[] args) throws Exception {
 
 //        ProductDao productDao = new JdbcProductDao();
@@ -316,7 +342,8 @@ public class JdbcProductDao implements ProductDao {
 //        productDao.createOrderInfo(orderInfo);
 //        System.out.println("완료우");
 
-        System.out.println("안녕하세요~");
+        Payment payment = new Payment(999,cal.getTime(),"trent",3);
+        System.out.println(payment);
 
     }
 }

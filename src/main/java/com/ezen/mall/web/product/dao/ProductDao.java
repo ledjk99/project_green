@@ -1,9 +1,6 @@
 package com.ezen.mall.web.product.dao;
 
-import com.ezen.mall.web.product.dto.Category;
-import com.ezen.mall.web.product.dto.File;
-import com.ezen.mall.web.product.dto.OrderInfo;
-import com.ezen.mall.web.product.dto.Product;
+import com.ezen.mall.web.product.dto.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -22,4 +19,6 @@ public interface ProductDao {
     public List<File> getFile() throws SQLException;
 
     public void createOrderInfo(OrderInfo orderInfo) throws Exception;
+
+    public void createPaymentInfo(Payment payment) throws Exception;
 }
