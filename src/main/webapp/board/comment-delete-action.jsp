@@ -13,9 +13,10 @@
 <%
     int boardId = Integer.parseInt(request.getParameter("boardId"));
     int articleId = Integer.parseInt(request.getParameter("articleId"));
+    int commentId = Integer.parseInt(request.getParameter("commentId"));
 
     BoardService boardService = new BoardServiceImpl();
-    boardService.deleteComment(boardId, articleId);
+    boardService.deleteComment(boardId, articleId, commentId);
 
     request.setAttribute("boardId", boardId);
     request.setAttribute("articleId", articleId);

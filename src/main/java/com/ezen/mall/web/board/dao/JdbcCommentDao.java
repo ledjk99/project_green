@@ -101,9 +101,9 @@ public class JdbcCommentDao implements CommentDao {
      * @param articleId 게시글 번호
      * @throws SQLException
      */
-    public void removeComment(int boardId, int articleId) throws SQLException {
+    public void removeComment(int boardId, int articleId, int commentId) throws SQLException {
         StringBuilder sql = new StringBuilder();
-        sql.append(" DELETE FROM comments WHERE board_id = ? AND article_id = ?");
+        sql.append(" DELETE FROM comments WHERE board_id = ? AND article_id = ? AND comment_id = ?");
 
         Connection conn = connectionFactory.getConnection();
         PreparedStatement pstmt = null;
@@ -112,6 +112,7 @@ public class JdbcCommentDao implements CommentDao {
             pstmt = conn.prepareStatement(sql.toString());
             pstmt.setInt(1, boardId);
             pstmt.setInt(2, articleId);
+            pstmt.setInt(3, commentId);
             pstmt.executeUpdate();
         } finally {
             try {
@@ -142,7 +143,7 @@ public class JdbcCommentDao implements CommentDao {
         System.out.println(commentList);
 
         // 댓글 삭제 테스트
-        commentDao.removeComment(2, 36);
+        commentDao.removeComment(2, 13, 24);
         System.out.println("댓글 삭제 완료!");
     }
 }

@@ -139,9 +139,9 @@ public class BoardServiceImpl implements BoardService {
      * @param articleId 게시글 번호
      */
     @Override
-    public void deleteComment(int boardId, int articleId) {
+    public void deleteComment(int boardId, int articleId, int commentId) {
         try {
-            commentDao.removeComment(boardId, articleId);
+            commentDao.removeComment(boardId, articleId, commentId);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

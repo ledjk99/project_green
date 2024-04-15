@@ -151,6 +151,7 @@
             <form id="deleteCommentForm" action="comment-delete-action.jsp" method="post">
                 <input type="hidden" name="boardId" value="${param.boardId}">
                 <input type="hidden" name="articleId" value="${param.articleId}">
+                <input type="hidden" name="commentId" value="${comment.commentId}">
                 <button type="button" class="btn btn-dark" onclick="confirmDelete()">삭제</button>
             </form>
 

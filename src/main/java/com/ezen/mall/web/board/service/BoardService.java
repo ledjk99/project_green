@@ -72,6 +72,7 @@ public interface BoardService {
      * 댓글 삭제 서비스
      * @param boardId 게시판 번호
      * @param articleId 게시글 번호
+     * @param commentId 댓글 번호
      */
-    public void deleteComment(int boardId, int articleId);
+    public void deleteComment(int boardId, int articleId, int commentId);
 }
