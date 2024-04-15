@@ -1,10 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.ezen.mall.web.board.service.BoardService" %>
 <%@ page import="com.ezen.mall.web.board.service.BoardServiceImpl" %>
 <%@ page import="com.ezen.mall.web.board.dto.Article" %>
 <%@ page import="com.ezen.mall.web.board.dto.Comment" %>
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
     int boardId = 0;
@@ -18,15 +18,16 @@
     }
 
     BoardService boardService = new BoardServiceImpl();
+
+    // 게시글 상세 보기
     Article article = boardService.getArticle(boardId, articleId);
     article.setArticleId(articleId);
     article.setBoardId(boardId);
     request.setAttribute("article", article);
 
+    // 댓글 목록
     List<Comment> commentList = boardService.commentList(boardId, articleId);
     request.setAttribute("comments", commentList);
-
-    String filePath = (String) request.getAttribute("imagePath");
 %>
 
 <!DOCTYPE html>
@@ -62,8 +63,8 @@
 <!-- header start -->
 <jsp:include page="/module/header.jsp"/>
 <!-- header end -->
-<!-- section start -->
 
+<!-- section start -->
 <div class="container-fluid">
     <h3 class="mt-4">게시글 상세</h3>
     <hr>
@@ -108,10 +109,7 @@
                 }
             }
         </script>
-
     </div>
-
-
 
     <form name="commentForm" action="comment-action.jsp" method="post" style="max-height: 300px; overflow-y: auto;">
         <input type="hidden" name="boardId" value="${param.boardId}">
@@ -137,7 +135,6 @@
                 </li>
             </ul>
         </div>
-
     </form>
 
     <c:forEach var="comment" items="${comments}" varStatus="i">
@@ -150,7 +147,6 @@
                         ${comment.content}
                 </div>
             </div>
-<%--            <button type="submit" class="btn btn-dark mt-3">삭제</button>--%>
 
             <form id="deleteCommentForm" action="comment-delete-action.jsp" method="post">
                 <input type="hidden" name="boardId" value="${param.boardId}">
@@ -168,10 +164,9 @@
             </script>
         </div>
     </c:forEach>
-
 </div>
-
 <!-- section end -->
+
 <!-- footer start -->
 <jsp:include page="/module/footer.jsp"/>
 <!-- footer end -->

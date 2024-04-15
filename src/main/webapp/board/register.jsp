@@ -1,6 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head start -->
@@ -31,8 +30,8 @@
 <!-- header start -->
 <jsp:include page="/module/header.jsp"/>
 <!-- header end -->
-<!-- section start -->
 
+<!-- section start -->
 <div class="container-fluid">
     <h3 class="mt-4">게시글 쓰기</h3>
     <form name="registerForm" action="register-action.jsp" method="post">
@@ -59,10 +58,9 @@
             <button type="submit" class="btn btn-outline-dark">등 록</button>
         </div>
     </form>
-
 </div>
-
 <!-- section end -->
+
 <!-- footer start -->
 <jsp:include page="/module/footer.jsp"/>
 <!-- footer end -->

@@ -1,23 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.ezen.mall.web.board.service.BoardService" %>
 <%@ page import="com.ezen.mall.web.board.service.BoardServiceImpl" %>
 <%@ page import="com.ezen.mall.web.board.dto.Article" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.ezen.mall.web.common.page.PageParams" %>
 <%@ page import="com.ezen.mall.web.common.page.Pagination" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
     // 사용자 요청 게시판 번호
-    int boardId = 3;
+    int boardId = 2;
     if (request.getParameter("boardId") != null) {
         boardId = Integer.parseInt(request.getParameter("boardId"));
     }
-
-//    int articleId = 0;
-//    if (request.getParameter("articleId") != null) {
-//        articleId = Integer.parseInt(request.getParameter("articleId"));
-//    }
 
     // 사용자 요청 페이지 번호
     int requestPage = 1;
@@ -41,21 +36,18 @@
     String searchValue = request.getParameter("value");
 
     BoardService boardService = new BoardServiceImpl();
-    List<Article> list = boardService.articleList(rowCount, requestPage, searchType, searchValue, boardId);
-
-    request.setAttribute("list", list);
 
     // 페이징 처리를 위한 테이블 행의 개수
     int tableRowCount = boardService.getArticleCount(searchType, searchValue);
 
     PageParams params = new PageParams(rowCount, pageSize, requestPage, tableRowCount);
     Pagination pagination = new Pagination(params);
-
     request.setAttribute("pagination", pagination);
 
-
+    // 게시글 목록 반환
+    List<Article> list = boardService.articleList(rowCount, requestPage, searchType, searchValue, boardId);
+    request.setAttribute("list", list);
 %>
-
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -92,16 +84,16 @@
 <!-- header start -->
 <jsp:include page="/module/header.jsp"/>
 <!-- header end -->
-<!-- section start -->
 
+<!-- section start -->
 <div id="page-content-wrapper">
 
     <div class="container-fluid">
 
         <h3 class="mt-4">후기게시판
             <span>
-            <a href="register.jsp?boardId=${param.boardId}" class="btn btn-sm btn-secondary">게시글 쓰기</a>
-        </span>
+                <a href="register.jsp?boardId=${param.boardId}" class="btn btn-sm btn-secondary">게시글 쓰기</a>
+            </span>
         </h3>
 
         <form id="searchForm">
@@ -193,8 +185,8 @@
         </ul>
     </div>
 </div>
-
 <!-- section end -->
+
 <!-- footer start -->
 <jsp:include page="/module/footer.jsp"/>
 <!-- footer end -->

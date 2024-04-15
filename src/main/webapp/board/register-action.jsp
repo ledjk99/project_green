@@ -1,13 +1,14 @@
-<%@ page import="com.ezen.mall.web.board.service.BoardService" %>
-<%@ page import="com.ezen.mall.web.board.service.BoardServiceImpl" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-게시글 작성 처리
+<%--
+  게시글 작성 처리
   User: 송승아
   Date: 2024-04-09
   Time: PM 4:08
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.ezen.mall.web.board.service.BoardService" %>
+<%@ page import="com.ezen.mall.web.board.service.BoardServiceImpl" %>
 
 <% request.setCharacterEncoding("utf-8"); %>
 <jsp:useBean id="article" class="com.ezen.mall.web.board.dto.Article" scope="request"/>
@@ -23,8 +24,6 @@
 
     BoardService boardService = new BoardServiceImpl();
     boardService.writeArticle(article);
-
-//    response.sendRedirect("qnalist.jsp?boardId=" + boardId);
 %>
 
 <c:choose>
