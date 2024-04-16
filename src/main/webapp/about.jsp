@@ -16,71 +16,50 @@
     <link type="text/css" rel="stylesheet" href="https://order.pstatic.net/202404/04_163641_1712216201/order_customer/mobile_static/css/service/mobile/detail.css">
 </head>
 <body>
-<!-- nav start -->
 <jsp:include page="/module/nav.jsp"/>
-<!-- nav end -->
-<!-- header start -->
 <jsp:include page="/module/header.jsp"/>
-<!-- header end -->
 <!-- section start -->
 <div style="text-align: center">
-
     <img src="/img/bg-about-04.jpg" style="max-width: 100%; height: auto;">
-    <br>
-    <br>
-    <br>
-
+    <br><br><br>
     <h3 style="font-size: 30px;
         font-family:'Times New Roman';
         color:darkolivegreen;
         letter-spacing: normal;
         text-align: center">Green Health</h3>
-
     <p style="text-align: center; margin-right: 10px; font-family: 'Times New Roman'">
             <span style="color: red;">
                 <strong>건강한 하루를 위하여!</strong>
             </span>
         당신의 건강한 하루를 책임집니다!
     </p>
-
-
-    <br>
-    <br>
+    <br><br>
     <p> 국내 가공 제조는 물론 다양한 유통망으로 대형식품가공기업, 중견기업 납품과 함께<br>
         홈쇼핑, 온라인 쇼핑몰, 오프라인 시장, 백화점 등 다양한 판매채널을 확보하여<br>
         수입부터 유통까지 모든 프로세스를 자체 진행하고 있습니다.</p>
-
     <table style="margin: 10px auto">
         <tr>
             <th>회사명</th>
             <td>(주)그린헬스</td>
         </tr>
-
         <tr>
             <th>설립일</th>
             <td>2015년 7월 14일</td>
         </tr>
-
         <tr>
             <th>Vision</th>
             <td>인류의 건강을 생각하는 선한 기업</td>
         </tr>
-
         <tr>
             <th>사훈</th>
             <td>더불어 함께 하는 모두가 건강한 세상</td>
         </tr>
-
         <tr>
             <th>주요업무</th>
             <td>한국에 잘 알려지지 않은 상품 직수입, 자체적으로 브랜드화 유통</td>
         </tr>
-
     </table>
-
-    <Br>
-    <br>
-
+    <Br><br>
     <h2>건강한 삶을 위한 Green Heath의 노력!</h2>
     <br><br><br>
     [ 연혁 ]
@@ -97,10 +76,7 @@
     <p>2024 - 매출 100억 돌파</p>
     <br><br><br>
 </div>
-<!-- section end -->
-<!-- footer start -->
 <jsp:include page="/module/footer.jsp"/>
-<!-- footer end -->
 <script src="https://kit.fontawesome.com/3accb69132.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -6,37 +6,22 @@
 <%@ page import="com.ezen.mall.web.common.page.Pagination" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%
-    // 사용자 요청 게시판 번호
     int boardId = 3;
     if (request.getParameter("boardId") != null) {
         boardId = Integer.parseInt(request.getParameter("boardId"));
     }
-
-//    int articleId = 0;
-//    if (request.getParameter("articleId") != null) {
-//        articleId = Integer.parseInt(request.getParameter("articleId"));
-//    }
-
-    // 사용자 요청 페이지 번호
     int requestPage = 1;
     if (request.getParameter("page") != null) {
         requestPage = Integer.parseInt(request.getParameter("page"));
     }
-
-    // 테이블 당 보여지는 행의 개수
     int rowCount = 10;
     if (request.getParameter("rowcount") != null) {
         rowCount = Integer.parseInt(request.getParameter("rowcount"));
     }
-
-    // 페이지에 보여지는 페이지 번호 수
     int pageSize = 10;
-
     // 사용자 검색 유형
     String searchType = request.getParameter("type");
-
     // 사용자 검색 값
     String searchValue = request.getParameter("value");
 

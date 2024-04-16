@@ -23,12 +23,10 @@ public class ConnectionFactory {
     private static ConnectionFactory instance = new ConnectionFactory();
 
     private DataSource dataSource;
-
     private ConnectionFactory(){
         loadProperties();
         createDataSource();
     }
-
     private void loadProperties() {
         Properties prop = new Properties();
         InputStream in = getClass().getResourceAsStream("/config/db.properties");
@@ -42,7 +40,6 @@ public class ConnectionFactory {
             e.printStackTrace();
         }
     }
-
     private void createDataSource(){
         // DB 연결 설정 정보
         BasicDataSource dataSource = new BasicDataSource();
@@ -50,7 +47,6 @@ public class ConnectionFactory {
         dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
-
         // 커넥션풀 설정 정보
         dataSource.setInitialSize(5);
         dataSource.setMaxTotal(10);
@@ -58,22 +54,10 @@ public class ConnectionFactory {
         dataSource.setMaxWaitMillis(2000);
         this.dataSource = dataSource;
     }
-
-
     public static ConnectionFactory getInstance(){
         return  instance;
     }
-
     public Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
-
-    public static void main(String[] args) throws SQLException {
-        // DAO 클래스 영역이라 가정
-        ConnectionFactory factory = ConnectionFactory.getInstance();
-        Connection con = factory.getConnection();
-        System.out.println(con);
-
-    }
-
 }

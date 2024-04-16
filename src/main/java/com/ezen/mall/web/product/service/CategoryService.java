@@ -35,7 +35,5 @@ public interface CategoryService {
 
     public void createOrderInfo(OrderInfo orderInfo);
 
-    public void createPayment(Payment payment);
-
 
 }

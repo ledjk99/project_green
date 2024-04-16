@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
-<!-- head start -->
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -23,16 +22,10 @@
         }
     </style>
 </head>
-
 <body>
-<!-- nav start -->
 <jsp:include page="/module/nav.jsp"/>
-<!-- nav end -->
-<!-- header start -->
 <jsp:include page="/module/header.jsp"/>
-<!-- header end -->
 <!-- section start -->
-
 <div class="container-fluid">
     <h3 class="mt-4">게시글 쓰기</h3>
     <form name="registerForm" action="register-action.jsp" method="post">
@@ -59,13 +52,9 @@
             <button type="submit" class="btn btn-outline-dark">등 록</button>
         </div>
     </form>
-
 </div>
-
 <!-- section end -->
-<!-- footer start -->
 <jsp:include page="/module/footer.jsp"/>
-<!-- footer end -->
 <script src="https://kit.fontawesome.com/3accb69132.js" crossorigin="anonymous"></script>
 </body>
 </html>

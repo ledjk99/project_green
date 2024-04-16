@@ -80,13 +80,4 @@ public class CategoryServiceImpl implements CategoryService{
             throw new RuntimeException(e);
         }
     }
-
-    @Override
-    public void createPayment(Payment payment) {
-        try {
-            productDao.createPaymentInfo(payment);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

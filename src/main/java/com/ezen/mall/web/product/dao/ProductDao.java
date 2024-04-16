@@ -19,6 +19,4 @@ public interface ProductDao {
     public List<File> getFile() throws SQLException;
 
     public void createOrderInfo(OrderInfo orderInfo) throws Exception;
-
-    public void createPaymentInfo(Payment payment) throws Exception;
 }

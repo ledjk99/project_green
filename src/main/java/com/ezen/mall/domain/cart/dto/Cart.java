@@ -1,4 +1,4 @@
-package com.ezen.mall.web.cart.dto;
+package com.ezen.mall.domain.cart.dto;
 
 public class Cart {
     private int productId;

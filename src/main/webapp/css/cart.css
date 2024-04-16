@@ -155,7 +155,7 @@ td {
     border: 1px lightgray solid;
 }
 
-.cart__bigorderbtn.right {
+.cart__bigorderbtn.right  {
     background-color: black;
     color: white;
     border: none;
@@ -173,7 +173,10 @@ td {
     border:solid 1px gray; color: black;
 }
 
-.default:hover{background: #ddd;}
+.default:hover{background: #ddd; color:white;}
 .backBtn{background: #fff; border: solid 1px gray;}
 .buttonfloat{text-align: center;}
 .clearboth{clear: both;}
+.cart__list__orderbtn a:visited{color: white;}
+.cart__list__orderbtn a:hover{color: white; text-decoration: none;}
+.cart__list__orderbtn a:active{color: white; text-decoration: none;}

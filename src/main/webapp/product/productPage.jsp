@@ -33,122 +33,37 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Green Health</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico"/>
-    <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Stylish&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3accb69132.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
-<!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!"><i class="fa-solid fa-capsules"></i>Green Health</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!q">All Products</a></li>
-                        <li>
-                            <hr class="dropdown-divider"/>
-                        </li>
-                        <li><a class="dropdown-item" href="#!">인기 상품</a></li>
-                        <li><a class="dropdown-item" href="#!">비타민</a></li>
-                        <li><a class="dropdown-item" href="#!">루테인</a></li>
-                        <li><a class="dropdown-item" href="#!">오메가</a></li>
-                        <li><a class="dropdown-item" href="#!">아연</a></li>
-                        <li><a class="dropdown-item" href="#!">유산균</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="boardList" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">Board</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Board</a></li>
-                        <li>
-                            <hr class="dropdown-divider"/>
-                        </li>
-                        <li><a class="dropdown-item" href="#!">공지사항</a></li>
-                        <li><a class="dropdown-item" href="#!">Q&A</a></li>
-                        <li><a class="dropdown-item" href="#!">상품 후기</a></li>
-
-                    </ul>
-                </li>
-            </ul>
-            <form class="d-flex">
-
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                    Login
-                    <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
-                </button>
-
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
-
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="fa-solid fa-user-plus"></i>
-                    Sign up
-                    <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
-                </button>
-
-            </form>
-        </div>
-    </div>
-</nav>
-<!-- Header-->
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder"><i class="fa-solid fa-capsules"></i>Green Health</h1>
-            <p class="lead fw-normal text-white-50 mb-0">건강한 하루를 위하여</p>
-        </div>
-    </div>
-</header>
-
-
+<!-- nav start -->
+<jsp:include page="/module/nav.jsp"/>
+<jsp:include page="/module/header.jsp"/>
 <!-- Section-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-
                 <c:forEach var="file" items="${file}" varStatus="loop">
                     <c:if test="${file.productId == product.productId}">
                         <img class="card-img" src="/img/${file.name}" style="width: 50%"/>
                     </c:if>
                 </c:forEach>
-
                 <div class="col-md-6">
                     <h1 class="display-5 fw-bolder" style=" font-family: Stylish, serif;">${product.name}</h1>
                     <p style=" font-family: Stylish, serif;">${product.information}</p>
                     <div class="fs-5 mb-5">
                         <span class="text-decoration-none" style=" font-family: Stylish, serif;"></span>
                     </div>
-
                     <hr class="my-4">
                     <div class="input-group fs-5 mb-5">
-
                     </div>
-
-                    <form name="productForm" method="post" action="/cart/addcart.jsp">
+                    <form name="productForm" method="post" action="/cart/addCart.jsp">
                         <div class="container bg-light">
                             <label>주문수량</label> <input type="number" name="count">
                             <br>
@@ -159,14 +74,11 @@
                         </div>
                         <br>
                         <strong>※2개이상의 제품 구매를 원하실 경우 장바구니에 넣어주세요.</strong>
-
                         <div class="d-flex">
                             <button class="btn btn-outline-dark" type="submit">
                                 <i class="fa-solid fa-credit-card"></i>
                                 <a href="${pay}" style="color: black">바로 구매하기</a>
-                            </button>
-                            &nbsp
-
+                            </button>&nbsp
                             <button class="btn btn-outline-dark flex-shrink-0" type="submit" style="color: black">
                                 <i class="bi-cart-fill me-1"></i>
                                    장바구니 담기
@@ -176,7 +88,6 @@
                 </div>
             </div>
         </div>
-
         <section class="py-5 bg-light">
             <div class="container">
                 <p class="lead" id="description" style="text-align: center">제품 상세 페이지 입니다.</p>

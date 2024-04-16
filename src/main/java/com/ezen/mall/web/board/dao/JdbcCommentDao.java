@@ -122,27 +122,4 @@ public class JdbcCommentDao implements CommentDao {
             }
         }
     }
-
-    public static void main(String[] args) throws SQLException {
-        CommentDao commentDao = new JdbcCommentDao();
-
-        Comment comment = new Comment();
-        comment.setContent("댓글 내용");
-        comment.setPasswd("1111");
-        comment.setArticleId(11);
-        comment.setBoardId(2);
-        comment.setMemberId("monday");
-
-        // 댓글 등록 테스트
-        commentDao.createComment(comment);
-        System.out.println("댓글 등록 완료!");
-
-        // 댓글 목록 반환 테스트
-        List<Comment> commentList = commentDao.findCommentsAll(2, 45);
-        System.out.println(commentList);
-
-        // 댓글 삭제 테스트
-        commentDao.removeComment(2, 36);
-        System.out.println("댓글 삭제 완료!");
-    }
 }

@@ -340,44 +340,4 @@ public class JdbcArticleDao implements ArticleDao {
             }
         }
     }
-    
-    public static void main(String[] args) throws SQLException {
-        ArticleDao articleDao = new JdbcArticleDao();
-
-        Article article = new Article();
-        article.setBoardId(2);
-        article.setTitle("연습을 위한 게시글 제목입니다.");
-        article.setContent("연습을 위한 게시글 내용입니다.");
-        article.setPasswd("1111");
-        article.setMemberId("practice");
-
-        // 신규 게시글 등록 테스트
-        articleDao.createArticle(article);
-        System.out.println("신규글 등록 완료!");
-
-        int rowCount = 1;
-        int requestPage = 1;
-        String type = "w";
-        String value = "1";
-        int boardId = 2;
-
-        // 게시글 개수 반환 테스트
-        System.out.println(articleDao.findByArticleCount(type, value));
-
-        // 게시글 목록 반환 테스트
-        List<Article> articleList = articleDao.findByAll(rowCount, requestPage, type, value, boardId);
-        System.out.println(articleList);
-
-        // 게시글 조회수 업데이트 테스트
-        articleDao.updateArticleHitCount(2, 11);
-        System.out.println("조회수 업데이트 완료!");
-
-        // 게시글 상세 보기 테스트
-        Article readArticle = articleDao.readArticle(2, 13);
-        System.out.println(readArticle);
-
-        // 게시글 삭제 테스트
-        articleDao.removeArticle(2, 19);
-        System.out.println("게시글 삭제 완료!");
-    }
 }

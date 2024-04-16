@@ -5,33 +5,26 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%
     int boardId = 0;
     if (request.getParameter("boardId") != null) {
         boardId = Integer.parseInt(request.getParameter("boardId"));
     }
-
     int articleId = 0;
     if (request.getParameter("articleId") != null) {
         articleId = Integer.parseInt(request.getParameter("articleId"));
     }
-
     BoardService boardService = new BoardServiceImpl();
     Article article = boardService.getArticle(boardId, articleId);
     article.setArticleId(articleId);
     article.setBoardId(boardId);
     request.setAttribute("article", article);
-
     List<Comment> commentList = boardService.commentList(boardId, articleId);
     request.setAttribute("comments", commentList);
-
     String filePath = (String) request.getAttribute("imagePath");
 %>
-
 <!DOCTYPE html>
 <html lang="ko">
-<!-- head start -->
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -55,15 +48,9 @@
     </style>
 </head>
 <body>
-
-<!-- nav start -->
 <jsp:include page="/module/nav.jsp"/>
-<!-- nav end -->
-<!-- header start -->
 <jsp:include page="/module/header.jsp"/>
-<!-- header end -->
 <!-- section start -->
-
 <div class="container-fluid">
     <h3 class="mt-4">게시글 상세</h3>
     <hr>
@@ -83,7 +70,6 @@
         <label>등록일자</label>
         <input type="text" class="form-control" name="regDate" value="${article.regdate}" readonly>
     </div>
-
     <div class="button-container">
         <c:choose>
             <c:when test="${param.boardId == 2}">
@@ -93,13 +79,11 @@
                 <a href="reviewlist.jsp" class="btn btn-outline-dark">목록</a>
             </c:when>
         </c:choose>
-
         <form id="deleteForm" action="delete-action.jsp" method="post">
             <input type="hidden" name="boardId" value="${param.boardId}">
             <input type="hidden" name="articleId" value="${param.articleId}">
             <button type="button" class="btn btn-dark" onclick="confirmDelete()">삭제</button>
         </form>
-
         <script>
             function confirmDelete() {
                 if (confirm('정말로 이 게시글을 삭제하시겠습니까?')) {
@@ -108,16 +92,11 @@
                 }
             }
         </script>
-
     </div>
-
-
-
     <form name="commentForm" action="comment-action.jsp" method="post" style="max-height: 300px; overflow-y: auto;">
         <input type="hidden" name="boardId" value="${param.boardId}">
         <input type="hidden" name="articleId" value="${param.articleId}">
         <input type="hidden" name="memberId" value="${article.memberId}">
-
         <div class="card-header bg-light">
             <i class="fa fa-comment fa"></i> REPLY
         </div>
@@ -137,9 +116,7 @@
                 </li>
             </ul>
         </div>
-
     </form>
-
     <c:forEach var="comment" items="${comments}" varStatus="i">
         <div id="comments-list">
             <div class="card m-2">
@@ -150,14 +127,11 @@
                         ${comment.content}
                 </div>
             </div>
-<%--            <button type="submit" class="btn btn-dark mt-3">삭제</button>--%>
-
             <form id="deleteCommentForm" action="comment-delete-action.jsp" method="post">
                 <input type="hidden" name="boardId" value="${param.boardId}">
                 <input type="hidden" name="articleId" value="${param.articleId}">
                 <button type="button" class="btn btn-dark" onclick="confirmDelete()">삭제</button>
             </form>
-
             <script>
                 function confirmDelete() {
                     if (confirm('정말로 이 댓글을 삭제하시겠습니까?')) {
@@ -168,13 +142,9 @@
             </script>
         </div>
     </c:forEach>
-
 </div>
-
 <!-- section end -->
-<!-- footer start -->
 <jsp:include page="/module/footer.jsp"/>
-<!-- footer end -->
 <script src="https://kit.fontawesome.com/3accb69132.js" crossorigin="anonymous"></script>
 </body>
 </html>

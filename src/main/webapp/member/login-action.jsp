@@ -3,18 +3,17 @@
 <%@ page import="com.ezen.mall.web.common.encription.EzenUtil" %>
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <%
     String id = request.getParameter("loginid");
     String passwd = request.getParameter("loginpw");
     String saveId = request.getParameter("saveid");
     String referer = request.getParameter("referer");
-
+    System.out.println(id);
+    System.out.println(passwd);
+    System.out.println(saveId);
     if(referer == null){
         referer = "/";
     }
-
     MemberService memberService = new MemberService();
     Member loginMember = memberService.login(id, passwd);
     if(loginMember != null){
@@ -37,7 +36,6 @@
         }
         session.setAttribute("loginMember", loginMember);
             response.sendRedirect("/");
-//        response.sendRedirect(referer);
     }else{
 %>
 <script>

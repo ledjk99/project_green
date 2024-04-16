@@ -51,12 +51,4 @@ public class JdbcBoardDao implements BoardDao {
         }
         return list;
     }
-
-    public static void main(String[] args) throws SQLException {
-        BoardDao boardDao = new JdbcBoardDao();
-
-        // 게시판 목록 반환 테스트
-        List<Board> boardList = boardDao.findByBoardAll();
-        System.out.println(boardList);
-    }
 }

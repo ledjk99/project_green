@@ -6,14 +6,10 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="com.ezen.mall.web.common.validate.Validator" %>
 <%@ page import="com.ezen.mall.web.member.service.MemberService" %>
-
 <% request.setCharacterEncoding("utf-8"); %>
 <jsp:useBean id="member" class="com.ezen.mall.web.member.dto.Member" scope="session"/>
 <jsp:setProperty name="member" property="*" />
-<%--<jsp:setProperty name="member" property="picture" value="defalut.jpg" />--%>
-
 <%
- // 입력데이터 데이터 유효성 검증 추가
     Map<String, String> errors = new HashMap<>();
     if(Validator.isEmpty(member.getId())) {
         errors.put("id", "[서버]아이디는 필수 입력사항입니다.");
@@ -30,15 +26,10 @@
     if(Validator.isEmpty(member.getPhone())) {
         errors.put("phone", "[서버]전화번호는 필수 입력사항입니다.");
     }
-
-
-    // 검증 오류 메시지가 한개라도 존재 시 회원가입 화면으로 포워드
     if(!errors.isEmpty()) {
         request.setAttribute("errors", errors);
-        request.getRequestDispatcher("/member/register.jsp").forward(request, response);
+        request.getRequestDispatcher("/member/login.jsp").forward(request, response);
     }
-
-
 MemberService memberService = new MemberService();
 Member registerMember = memberService.registerMember(member);
 session.setAttribute("member", registerMember);

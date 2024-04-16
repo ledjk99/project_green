@@ -4,19 +4,13 @@
 <%@ page import="com.ezen.mall.web.product.dto.OrderInfo" %>
 <%@ page import="com.ezen.mall.web.product.service.CategoryService" %>
 <%@ page import="com.ezen.mall.web.product.service.CategoryServiceImpl" %>
-
 <%
     String productId = request.getParameter("productId");
     String productPrice = request.getParameter("productPrice");
     String productName = request.getParameter("productName");
-
-
 %>
-
-
 <!DOCTYPE html>
 <html lang="ko">
-<!-- head start -->
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -38,22 +32,14 @@
         #card{
             width: 200px;
         }
-
-
     </style>
 </head>
 <body>
-<!-- nav start -->
 <jsp:include page="/module/nav.jsp"/>
-<!-- nav end -->
-<!-- header start -->
 <jsp:include page="/module/header.jsp"/>
-<!-- header end -->
 <!-- section start -->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
-
-
    <form name="order-form" action="pay-action.jsp" method="post">
         <div class="detail_section">
             <div class="info_area">
@@ -77,23 +63,14 @@
                             <label for="floatingInpu">배송메시지 입력</label>
                         </div>
                         </li>
-
-
-
                     </ul>
                 </div>
             </div>
         </div>
-        <!-- 선물하기 수락 이후 배송지 정보 노출 안함-->
-
-
-
-        <!-- 주문금액 -->
         <div class="detail_section type_payment_info">
             <div class="info_area ">
                 <div class="info_head">
                     <h3 class="h3">총 주문금액</h3>
-<%--                    <strong class="detail_order_price" name="productPrice">${param.values()}원</strong>--%>
                     <strong class="detail_order_price" name="productPrice"><%=productPrice%>원</strong>
                 </div>
                 <div class="info_cont">
@@ -107,7 +84,6 @@
                         <li>
                             <div class="total">
                                 <strong>상품금액</strong>
-<%--                                <em class="amount"><span name="productPrice">${param.values()}</span>원</em>--%>
                                 <em class="amount"><span name="productPrice"></span><%=productPrice%>원</em>
                             </div>
                         </li>
