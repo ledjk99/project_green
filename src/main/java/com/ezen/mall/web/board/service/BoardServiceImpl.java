@@ -57,10 +57,10 @@ public class BoardServiceImpl implements BoardService {
 
     /**
      * 게시글 목록 반환 서비스 구현
-     * @param rowCount 페이지에 나타나는 행의 수
+     * @param rowCount    페이지에 나타나는 행의 수
      * @param requestPage 요청 페이지
-     * @param type 검색 조건
-     * @param value 검색 값
+     * @param type        검색 조건
+     * @param value       검색 값
      * @return 게시글 목록
      */
     @Override
@@ -93,7 +93,7 @@ public class BoardServiceImpl implements BoardService {
 
     /**
      * 게시판 삭제 서비스 구현
-     * @param boardId 게시판 번호
+     * @param boardId   게시판 번호
      * @param articleId 게시글 번호
      */
     public void deleteArticle(int boardId, int articleId) {
@@ -120,7 +120,7 @@ public class BoardServiceImpl implements BoardService {
 
     /**
      * 댓글 목록 반환 구현
-     * @param boardId 게시판 번호
+     * @param boardId   게시판 번호
      * @param articleId 게시글 번호
      * @return
      */
@@ -135,8 +135,9 @@ public class BoardServiceImpl implements BoardService {
 
     /**
      * 댓글 삭제 서비스 구현
-     * @param boardId 게시판 번호
+     * @param boardId   게시판 번호
      * @param articleId 게시글 번호
+     * @param commentId 댓글 번호
      */
     @Override
     public void deleteComment(int boardId, int articleId, int commentId) {
