@@ -11,6 +11,9 @@
     String saveId = request.getParameter("saveid");
     String referer = request.getParameter("referer");
 
+    System.out.println(id);
+    System.out.println(passwd);
+    System.out.println(saveId);
     if(referer == null){
         referer = "/";
     }

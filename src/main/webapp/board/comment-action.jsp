@@ -23,11 +23,11 @@
         articleId = Integer.parseInt(request.getParameter("articleId"));
     }
 
-    String writerId = request.getParameter("writerId");
+    String memberId = request.getParameter("memberId");
 
     comment.setBoardId(boardId);
     comment.setArticleId(articleId);
-    comment.setMemberId(writerId);
+    comment.setMemberId(memberId);
 
     BoardService boardService = new BoardServiceImpl();
     boardService.writeComment(comment);

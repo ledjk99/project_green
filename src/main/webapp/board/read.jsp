@@ -111,31 +111,34 @@
         </script>
     </div>
 
-    <form name="commentForm" action="comment-action.jsp" method="post" style="max-height: 300px; overflow-y: auto;">
-        <input type="hidden" name="boardId" value="${param.boardId}">
-        <input type="hidden" name="articleId" value="${param.articleId}">
-        <input type="hidden" name="memberId" value="${article.memberId}">
+    <c:if test="${not empty loginMember}">
+        <form name="commentForm" action="comment-action.jsp" method="post" style="max-height: 300px; overflow-y: auto;">
+            <input type="hidden" name="boardId" value="${param.boardId}">
+            <input type="hidden" name="articleId" value="${param.articleId}">
 
-        <div class="card-header bg-light">
-            <i class="fa fa-comment fa"></i> REPLY
-        </div>
-        <div class="card-body">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <div class="form-inline mb-2">
-                        <label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
-                        <input type="text" class="form-control ml-2" placeholder="Enter yourId" id="replyId"
-                               name="writerId">
-                        <label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
-                        <input type="password" class="form-control ml-2" placeholder="Enter password" id="replyPassword"
-                               name="passwd">
-                    </div>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
-                    <button type="submit" class="btn btn-dark mt-3">등록</button>
-                </li>
-            </ul>
-        </div>
-    </form>
+            <div class="card-header bg-light">
+                <i class="fa fa-comment fa"></i> REPLY
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="form-inline mb-2">
+                            <label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
+                            <input type="text" class="form-control ml-2" placeholder="Enter yourId" id="replyId"
+                                   name="memberId">
+                            <label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
+                            <input type="password" class="form-control ml-2" placeholder="Enter password"
+                                   id="replyPassword"
+                                   name="passwd">
+                        </div>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                  name="content"></textarea>
+                        <button type="submit" class="btn btn-dark mt-3">등록</button>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </c:if>
 
     <c:forEach var="comment" items="${comments}" varStatus="i">
         <div id="comments-list">
