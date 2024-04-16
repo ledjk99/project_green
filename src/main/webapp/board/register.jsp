@@ -1,5 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<c:if test="${empty loginMember}">
+    <c:set var="referer" value="/board/register.jsp" scope="request"/>
+    <jsp:forward page="/member/login.jsp"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head start -->
@@ -36,8 +42,6 @@
     <h3 class="mt-4">게시글 쓰기</h3>
     <form name="registerForm" action="register-action.jsp" method="post">
         <input type="hidden" name="boardId" value="${param.boardId}">
-        <input type="hidden" name="articleId" value="${param.articleId}">
-        <input type="hidden" name="articleId" value="${param.memberId}">
         <div class="form-group">
             <label>제목</label>
             <input type="text" class="form-control" name="title">

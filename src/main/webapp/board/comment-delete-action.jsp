@@ -11,9 +11,20 @@
 <%@ page import="com.ezen.mall.web.board.service.BoardServiceImpl" %>
 
 <%
-    int boardId = Integer.parseInt(request.getParameter("boardId"));
-    int articleId = Integer.parseInt(request.getParameter("articleId"));
-    int commentId = Integer.parseInt(request.getParameter("commentId"));
+    int boardId = 0;
+    if (request.getParameter("boardId") != null) {
+        boardId = Integer.parseInt(request.getParameter("boardId"));
+    }
+
+    int articleId = 0;
+    if (request.getParameter("articleId") != null) {
+        articleId = Integer.parseInt(request.getParameter("articleId"));
+    }
+
+    int commentId = 0;
+    if (request.getParameter("commentId") != null) {
+        commentId = Integer.parseInt(request.getParameter("commentId"));
+    }
 
     BoardService boardService = new BoardServiceImpl();
     boardService.deleteComment(boardId, articleId, commentId);

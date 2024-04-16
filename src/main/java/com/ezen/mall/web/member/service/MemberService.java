@@ -30,7 +30,6 @@ public class MemberService {
         if(isMember){
             loginMember = memberDao.findById(id);
         }
-        System.out.println(loginMember);
         return  loginMember;
     }
     // 기타 등등
@@ -38,6 +37,6 @@ public class MemberService {
     public static void main(String[] args) throws SQLException {
         MemberService memberService = new MemberService();
         Member loginMember = memberService.login("monday", "1111");
-        System.out.println(loginMember);
+//        System.out.println(loginMember);
     }
 }

@@ -14,12 +14,15 @@
 <jsp:useBean id="article" class="com.ezen.mall.web.board.dto.Article" scope="request"/>
 <jsp:setProperty name="article" property="*"/>
 <%
-    int boardId = Integer.parseInt(request.getParameter("boardId"));
-    String passwd = "1111";
-    article.setPasswd(passwd);
-    article.setBoardId(boardId);
-
+    int boardId = 0;
+    if (request.getParameter("boardId") != null) {
+        boardId = Integer.parseInt(request.getParameter("boardId"));
+    }
     String memberId = request.getParameter("memberId");
+    String passwd = "1111";
+
+    article.setBoardId(boardId);
+    article.setPasswd(passwd);
     article.setMemberId(memberId);
 
     BoardService boardService = new BoardServiceImpl();

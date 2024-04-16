@@ -125,7 +125,7 @@
                         <div class="form-inline mb-2">
                             <label for="replyId"><i class="fa fa-user-circle-o fa-2x"></i></label>
                             <input type="text" class="form-control ml-2" placeholder="Enter yourId" id="replyId"
-                                   name="memberId">
+                                   name="memberId" value="${loginMember.id}">
                             <label for="replyPassword" class="ml-4"><i class="fa fa-unlock-alt fa-2x"></i></label>
                             <input type="password" class="form-control ml-2" placeholder="Enter password"
                                    id="replyPassword"
@@ -155,11 +155,11 @@
                 <input type="hidden" name="boardId" value="${param.boardId}">
                 <input type="hidden" name="articleId" value="${param.articleId}">
                 <input type="hidden" name="commentId" value="${comment.commentId}">
-                <button type="button" class="btn btn-dark" onclick="confirmDelete()">삭제</button>
+                <button type="button" class="btn btn-dark" onclick="confirmCommentDelete()">삭제</button>
             </form>
 
             <script>
-                function confirmDelete() {
+                function confirmCommentDelete() {
                     if (confirm('정말로 이 댓글을 삭제하시겠습니까?')) {
                         document.getElementById("deleteCommentForm").setAttribute("action", "comment-delete-action.jsp");
                         document.getElementById("deleteCommentForm").submit();

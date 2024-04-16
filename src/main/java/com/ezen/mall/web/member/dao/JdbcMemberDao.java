@@ -109,7 +109,6 @@ public class JdbcMemberDao implements MemberDao{
                 throw new RuntimeException(e);
             }
         }
-        System.out.println(isMember);
         return  isMember;
     }
 
@@ -151,7 +150,7 @@ public class JdbcMemberDao implements MemberDao{
 
         MemberDao memberDao = new JdbcMemberDao();
         boolean isMember = memberDao.findByIdNPasswd("monday", "1111");
-        System.out.println(isMember);
+//        System.out.println(isMember);
 
 
 

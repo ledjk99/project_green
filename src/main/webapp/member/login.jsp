@@ -47,6 +47,7 @@
 
         <%-- 로그인 & 회원가입 탭화면 --%>
         <div class="login-wrap">
+
             <div class="login-html" style="padding-top: 30px">
                 <%--                        <p class="mb-4 text-body-secondary text-danger">--%>
                 <%--                            ${message}--%>
@@ -54,7 +55,7 @@
 
                 <%-- 1탭 로그인 --%>
                 <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
-                                                                                         class="tab">로그인</label>
+                                                                                             class="tab">로그인</label>
                 <%-- 2탭 회원가입 --%>
                 <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">회원가입</label>
 

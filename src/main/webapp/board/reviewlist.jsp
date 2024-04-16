@@ -27,7 +27,7 @@
     }
 
     // 페이지에 보여지는 페이지 번호 수
-    int pageSize = 10;
+    int pageSize = 5;
 
     // 사용자 검색 유형
     String searchType = request.getParameter("type");
@@ -147,19 +147,20 @@
 
             <c:if test="${pagination.showFirst}">
                 <li class="page-item">
-                    <a class="page-link" href="?page=1&type=${param.type}&value=${param.value}">처음으로</a>
+                    <a class="page-link" href="?boardId=${param.boardId}&page=1&type=${param.type}&value=${param.value}">처음으로</a>
                 </li>
             </c:if>
 
             <c:if test="${pagination.showPrevious}">
                 <li class="page-item">
                     <a class="page-link"
-                       href="?page=${pagination.previousStartPage}&type=${param.type}&value=${param.value}">이전목록</a>
+                       href="?boardId=${param.boardId}&page=${pagination.previousStartPage}&type=${param.type}&value=${param.value}">이전목록</a>
                 </li>
             </c:if>
 
             <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}">
                 <c:url var="list" value="reviewlist.jsp" scope="request">
+                    <c:param name="boardId" value="${param.boardId}"/>
                     <c:param name="page" value="${i}"/>
                     <c:param name="type" value="${param.type}"/>
                     <c:param name="value" value="${param.value}"/>
@@ -172,14 +173,14 @@
             <c:if test="${pagination.showNext}">
                 <li class="page-item">
                     <a class="page-link"
-                       href="?page=${pagination.nextStartPage}&type=${param.type}&value=${param.value}">다음목록</a>
+                       href="?boardId=${param.boardId}&page=${pagination.nextStartPage}&type=${param.type}&value=${param.value}">다음목록</a>
                 </li>
             </c:if>
 
             <c:if test="${pagination.showLast}">
                 <li class="page-item">
                     <a class="page-link"
-                       href="?page=${pagination.totalPages}&type=${param.type}&value=${param.value}">끝으로</a>
+                       href="?boardId=${param.boardId}&page=${pagination.totalPages}&type=${param.type}&value=${param.value}">끝으로</a>
                 </li>
             </c:if>
         </ul>

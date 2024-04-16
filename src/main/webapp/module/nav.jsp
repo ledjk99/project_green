@@ -1,22 +1,22 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.ezen.mall.web.board.dto.Board" %>
 <%@ page import="com.ezen.mall.web.board.service.BoardService" %>
 <%@ page import="com.ezen.mall.web.board.service.BoardServiceImpl" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.ezen.mall.web.product.service.CategoryService" %>
 <%@ page import="com.ezen.mall.web.product.service.CategoryServiceImpl" %>
-<%@ page import="com.ezen.mall.web.product.dto.Product" %>
 <%@ page import="com.ezen.mall.web.product.dto.Category" %>
 
 <%
-BoardService boardService = new BoardServiceImpl();
-List<Board> boardList = boardService.boardList();
-request.setAttribute("boardList", boardList);
-CategoryService categoryService = new CategoryServiceImpl();
-List<Category> categoryList = categoryService.categoryList();
-request.setAttribute("categorylist",categoryList);
+    // 게시판 목록 반환
+    BoardService boardService = new BoardServiceImpl();
+    List<Board> boardList = boardService.boardList();
+    request.setAttribute("boardList", boardList);
+
+    CategoryService categoryService = new CategoryServiceImpl();
+    List<Category> categoryList = categoryService.categoryList();
+    request.setAttribute("categorylist", categoryList);
 %>
 
 <!-- nav start -->
@@ -44,7 +44,9 @@ request.setAttribute("categorylist",categoryList);
                             <hr class="dropdown-divider"/>
                         </li>
                         <c:forEach var="category" items="${categorylist}">
-                            <li><a class="dropdown-item" href="/product/readcategory.jsp?categoryId=${category.categoryId}">${category.categoryName}</a></li>
+                            <li><a class="dropdown-item"
+                                   href="/product/readcategory.jsp?categoryId=${category.categoryId}">${category.categoryName}</a>
+                            </li>
 
                         </c:forEach>
 

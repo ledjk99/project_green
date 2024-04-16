@@ -14,8 +14,15 @@
 <jsp:setProperty name="article" property="*"/>
 
 <%
-    int boardId = Integer.parseInt(request.getParameter("boardId"));
-    int articleId = Integer.parseInt(request.getParameter("articleId"));
+    int boardId = 0;
+    if (request.getParameter("boardId") != null) {
+        boardId = Integer.parseInt(request.getParameter("boardId"));
+    }
+
+    int articleId = 0;
+    if (request.getParameter("articleId") != null) {
+        articleId = Integer.parseInt(request.getParameter("articleId"));
+    }
 
     BoardService boardService = new BoardServiceImpl();
     boardService.deleteArticle(boardId, articleId);
