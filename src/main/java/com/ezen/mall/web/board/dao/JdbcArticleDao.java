@@ -128,7 +128,6 @@ public class JdbcArticleDao implements ArticleDao {
 
     /**
      * 게시글 목록 반환 구현
-     *
      * @param rowCount    페이지에 나타나는 행의 수
      * @param requestPage 요청 페이지
      * @param type        검색 조건

@@ -40,7 +40,7 @@ public interface BoardService {
 
     /**
      * 게시글 상세 보기 서비스
-     * @param boardId 게시판 번호
+     * @param boardId   게시판 번호
      * @param articleId 게시글 번호
      * @return 게시글
      */
@@ -48,7 +48,7 @@ public interface BoardService {
 
     /**
      * 게시글 삭제 서비스
-     * @param boardId 게시판 번호
+     * @param boardId   게시판 번호
      * @param articleId 게시글 번호
      */
     public void deleteArticle(int boardId, int articleId);
@@ -62,7 +62,7 @@ public interface BoardService {
 
     /**
      * 댓글 목록 반환 서비스
-     * @param boardId 게시판 번호
+     * @param boardId   게시판 번호
      * @param articleId 게시글 번호
      * @return 댓글 목록
      */
@@ -70,8 +70,9 @@ public interface BoardService {
 
     /**
      * 댓글 삭제 서비스
-     * @param boardId 게시판 번호
+     * @param boardId   게시판 번호
      * @param articleId 게시글 번호
+     * @param commentId 댓글 번호
      */
-    public void deleteComment(int boardId, int articleId);
+    public void deleteComment(int boardId, int articleId, int commentId);
 }

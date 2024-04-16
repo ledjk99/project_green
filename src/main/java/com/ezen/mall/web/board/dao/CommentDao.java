@@ -26,7 +26,8 @@ public interface CommentDao {
      * 댓글 삭제
      * @param boardId   게시판 번호
      * @param articleId 게시글 번호
+     * @param commentId 댓글 번호
      * @throws SQLException
      */
-    public void removeComment(int boardId, int articleId) throws SQLException;
+    public void removeComment(int boardId, int articleId, int commentId) throws SQLException;
 }
