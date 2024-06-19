@@ -95,6 +95,11 @@ public class JdbcCommentDao implements CommentDao {
         return list;
     }
 
+    @Override
+    public void removeComment(int boardId, int articleId, int commentId) throws SQLException {
+
+    }
+
     /**
      * 댓글 삭제 구현
      * @param boardId   게시판 번호

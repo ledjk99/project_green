@@ -10,79 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="002fa3d3-b1c7-4a4a-844e-56a8f0f790d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/domain/cart/dao/CartDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/domain/cart/dao/JdbcCartDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/domain/cart/service/CartService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/domain/cart/service/CartServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/domain/cart/service/ShoppingCart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/dao/JdbcOrderDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/dao/OrderDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/dto/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/dto/Pay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/cart/addCart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/cart/countAdd.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/cart/removeCart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/cart/removeallCart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js2/1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/domain/common/database/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/domain/common/database/ConnectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/admin/dao/r eadme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/admin/dto/r eadme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/admin/service/r eadme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/board/dao/JdbcArticleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/board/dao/JdbcArticleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/board/dao/JdbcBoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/board/dao/JdbcBoardDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/board/dao/JdbcCommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/board/dao/JdbcCommentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/cart/dto/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/domain/cart/dto/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/cart/service/CartService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/cart/service/ShoppingCart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/member/dao/JdbcMemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/member/dao/JdbcMemberDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/member/dao/MemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/member/dao/MemberDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/member/dto/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/member/dto/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/member/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/member/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/dao/JdbcProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/dao/JdbcProductDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/dao/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/dao/ProductDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/dto/Payment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/service/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ezen/mall/web/product/service/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/about.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/about.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/board/comment-action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/board/comment-action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/board/comment-delete-action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/board/comment-delete-action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/board/delete-action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/board/delete-action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/board/notice.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/board/notice.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/board/qnalist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/board/qnalist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/board/read.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/board/read.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/board/register-action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/board/register-action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/board/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/board/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/board/reviewlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/board/reviewlist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/add.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/addcart.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart/cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/delete.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/menu.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/result.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/member/login-action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/member/login-action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/member/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/member/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/member/register-action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/member/register-action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/member/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/member/result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/module/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/module/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/module/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/module/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/module/nav.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/module/nav.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product/orderlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product/orderlist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product/pay-action.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product/pay-action.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product/pay.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product/pay.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product/productPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product/productPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/product/readcategory.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product/readcategory.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/test.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,29 +31,29 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2fA67VImAvXTjShHAFdT0Aa385M" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 9.0.87.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/fullstack/workspace2/project_green/src/main/webapp/product",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.87.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/SYJ/Desktop/포트폴리오/포트폴리오 관련파일/project_green&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\fullstack\workspace2\project_green\src\main\webapp\product" />
@@ -239,11 +168,26 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713231367481</updated>
-      <workItem from="1713231368570" duration="12762000" />
+      <workItem from="1713231368570" duration="16646000" />
+      <workItem from="1713682494492" duration="257000" />
+      <workItem from="1714121595221" duration="157000" />
+      <workItem from="1714608994126" duration="90000" />
+      <workItem from="1714613962153" duration="930000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/about.jsp</url>
+          <line>79</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
